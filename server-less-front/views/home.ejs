@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/home.css">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Bienvenue sur la page d'accueil !</h1>
-    <div>
-        <p>Créer le formulaire ici.</p>
-    </div>
-    <div>
-        <p>Créer le tableau ici.</p>
-    </div>
+
+<body class="container">
+    <h1 class="my-4">Add product file</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data" class="my-4">
+        <div class="mb-3">
+            <label for="product-file-input" class="form-label">Product file</label>
+            <input
+                class="form-control"
+                type="file"
+                id="product-file-input"
+                name="csvFile"
+                accept=".csv"
+                required
+            >
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </body>
+
 </html>

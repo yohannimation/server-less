@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h1>Data analysed</h1>
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <% if (data.length > 0) { %>
+                    <% Object.keys(data[0]).forEach(key => { %>
+                        <th><%= key %></th>
+                    <% }); %>
+                <% } %>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(row => { %>
+                <tr>
+                    <% Object.values(row).forEach(value => { %>
+                        <td><%= value %></td>
+                    <% }); %>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <div class="mb-5">
+        <a href="/" class="btn btn-outline-primary">Back</a>
+        <a href="/history" class="btn btn-primary">History</a>
+    </div>
+</body>
+</html>
