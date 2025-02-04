@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const homeRoutes = require('./routes/home');
 app.use('/', homeRoutes);
 
-const dataRoutes = require('./routes/data');
+const dataRoutes = require('./routes/data-analyzed');
 app.use('/', dataRoutes);
 
 const historyRoutes = require('./routes/history');

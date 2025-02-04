@@ -6,7 +6,7 @@ const multer = require('multer');
 const router = express.Router();
 const upload = multer({ dest: 'uploads/' });
 
-router.post('/upload', upload.single('csvFile'), (req, res) => {
+router.post('/data-analyzed', upload.single('csvFile'), (req, res) => {
     console.log(req)
 
     if (!req.file) {
@@ -21,7 +21,7 @@ router.post('/upload', upload.single('csvFile'), (req, res) => {
         .on('data', (data) => results.push(data)) // Reading CSV data
         .on('end', () => {
             fs.unlinkSync(filePath); // Deleting the temporarily file
-            res.render('data-analysed', { title: "Server-less - Data analyzed", data: results });
+            res.render('data-analyzed', { title: "Server-less - Data analyzed", data: results });
         });
 });
 
