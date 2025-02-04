@@ -13,10 +13,14 @@ import { CreateFileDto } from './dto/create-file.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { AnalysisService } from 'src/analysis/analysis.service';
 
 @Controller('files')
 export class FileController {
-  constructor(private readonly fileService: FileService) {}
+  constructor(
+    private readonly fileService: FileService,
+    private readonly analysisService: AnalysisService,
+  ) {}
 
   @Post('upload')
   @UseInterceptors(
@@ -47,7 +51,14 @@ export class FileController {
     const createFileDto: CreateFileDto = {
       filename: file.filename,
     };
-    return this.fileService.create(createFileDto);
+    const createdFile = await this.fileService.create(createFileDto);
+
+    // Déclencher l'analyse de manière asynchrone
+    this.analysisService.analyzeFile(createdFile.id).catch((error) => {
+      console.error('Error analyzing file:', error);
+    });
+
+    return createdFile;
   }
 
   @Get()

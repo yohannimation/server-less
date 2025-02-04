@@ -4,8 +4,8 @@ services:
     image: postgres:13.5
     restart: always
     environment:
-      - POSTGRES_USER=myuser
-      - POSTGRES_PASSWORD=serverless
+      - POSTGRES_USER=csv_admin
+      - POSTGRES_PASSWORD=zg63xyW3Pdm6d
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
