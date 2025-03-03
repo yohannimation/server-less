@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h1>Data analyzed</h1>
+    <h2>Anomalies</h2>
+    <% if (
+        analysisData.anomalies.prix.length > 0 ||
+        analysisData.anomalies.quantite.length > 0 ||
+        analysisData.anomalies.note.length > 0
+    ) { %>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Line</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <% if (analysisData.anomalies.prix.length > 0) { %>
+                <% analysisData.anomalies.prix.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+            <% if (analysisData.anomalies.quantite.length > 0) { %>
+                <% analysisData.anomalies.quantite.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+            <% if (analysisData.anomalies.note.length > 0) { %>
+                <% analysisData.anomalies.note.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+    <% } else{ %>
+        <p>No anomaly detected</p>
+    <% } %>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div class="mb-5">
+        <a href="/" class="btn btn-outline-primary">Back</a>
+        <a href="/history" class="btn btn-primary">History</a>
+    </div>
+</body>
+</html>
