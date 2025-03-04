@@ -1,15 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="stylesheet" href="/css/history.css" />
-  </head>
-  <body>
-    <h1>Historique</h1>
-    <div>
-      <p>Créer la liste des fichiers.</p>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+</head>
+<body class="container mt-4">
+    <h1>History - Data analyzed</h1>
+    <h2>Anomalies</h2>
+    <% if (
+        analysisData.anomalies.prix.length > 0 ||
+        analysisData.anomalies.quantite.length > 0 ||
+        analysisData.anomalies.note.length > 0
+    ) { %>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Line</th>
+                    <th>Value</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <% if (analysisData.anomalies.prix.length > 0) { %>
+                <% analysisData.anomalies.prix.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+            <% if (analysisData.anomalies.quantite.length > 0) { %>
+                <% analysisData.anomalies.quantite.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+            <% if (analysisData.anomalies.note.length > 0) { %>
+                <% analysisData.anomalies.note.forEach(row => { %>
+                    <tr>
+                        <% Object.values(row).forEach(value => { %>
+                            <td><%= value %></td>
+                        <% }); %>
+                    </tr>
+                <% }); %>
+            <% } %>
+        </table>
+    <% } else{ %>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>No anomaly detected</th>
+                </tr>
+            </thead>
+        </table>
+    <% } %>
+    
+    <div class="sticky-bottom my-5 py-3 bg-white">
+        <a href="/" class="btn btn-outline-primary">Home</a>
+        <a href="/history" class="btn btn-primary">History</a>
     </div>
-  </body>
+</body>
 </html>

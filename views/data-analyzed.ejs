@@ -54,19 +54,17 @@
             <% } %>
         </table>
     <% } else{ %>
-        <p>No anomaly detected</p>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>No anomaly detected</th>
+                </tr>
+            </thead>
+        </table>
     <% } %>
-
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-    <div class="mb-5">
-        <a href="/" class="btn btn-outline-primary">Back</a>
+    
+    <div class="sticky-bottom my-5 py-3 bg-white">
+        <a href="/" class="btn btn-outline-primary">Home</a>
         <a href="/history" class="btn btn-primary">History</a>
     </div>
 </body>

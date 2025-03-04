@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+  </head>
+  <body class="container mt-4">
+    <h1>History</h1>
+    <ul class="list-group">
+      <% uploadedFilesData.forEach(row => { %>
+        <li class="list-group-item d-flex justify-content-between">
+          <div>
+            <a href="/history/<%= row.name %>">
+              <%= row.name %>
+            </a>
+             - 
+            <span class="<%= row.nbrAnomaly > 0 ? 'text-danger' : '' %>">
+              <%= row.nbrAnomaly %> anomal<%= row.nbrAnomaly > 0 ? 'ies' : 'y' %>
+            </span>
+          </div>
+          <p class="m-0"><%= row.date %></p>
+        </li>
+      <% }); %>
+    </ul>
+
+    <div class="sticky-bottom my-5 py-3 bg-white">
+      <a href="/" class="btn btn-outline-primary">Home</a>
+      <a href="/history" class="btn btn-primary">History</a>
+    </div>
+</body>
+</html>
